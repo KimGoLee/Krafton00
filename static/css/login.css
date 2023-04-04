@@ -1,5 +1,20 @@
 @import url("common.css");
 
-/* .center .center-logo{
-    width: 
-} */
+.center-logo {
+  width: 350px;
+  height: 108px;
+}
+
+.email {
+  width: 493px;
+  height: 63px;
+}
+
+.password {
+  width: 493px;
+  height: 63px;
+}
+
+.login {
+  color: var(--jungle_color);
+}
