@@ -131,7 +131,7 @@ def rank():
       elif user['team'] == 'green':
          user['time']=int(user['time']);
          greenList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
-      else:
+      elif user['team']=='blue':
          user['time']=int(user['time']);
          blueList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
    

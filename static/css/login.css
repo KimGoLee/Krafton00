@@ -1,5 +1,8 @@
 @import url("common.css");
 
+* {
+  font-family: "Lato", sans-serif;
+}
 .center {
   position: relative;
   display: flex;
@@ -88,12 +91,16 @@ form .box1 .join {
 }
 
 .exit {
-  color: white;
+  margin-top: 20px;
+  margin-left: 530px;
+  color: var(--jungle_color);
 }
 
 .title {
-  color: #bcb8b8;
-  margin: 30px 180px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 .photo {
   background-color: var(--line_color);
@@ -178,4 +185,10 @@ form .box1 .join {
   margin-top: 30px;
   margin-left: 250px;
   color: white;
+}
+
+.input_img {
+  display: block;
+  width: 221px;
+  height: 205px;
 }
