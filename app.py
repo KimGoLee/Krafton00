@@ -79,7 +79,7 @@ def main():
       if user['team'] == team:
          color_list.append(user)
 
-   color_list.sort(key=lambda x:-x['time'])
+   color_list.sort(key=lambda x:-int(x['time']))
 
    total = len(color_list)
    ranking = 0;

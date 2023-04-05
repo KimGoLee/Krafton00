@@ -1,12 +1,21 @@
 var modal;
 var exit;
+var logo;
+var user_id;
+
 //페이지가 처음 실행될 때 하는 일들
 window.onload = function () {
   modal = document.querySelector(".modal");
   exit = document.querySelector(".exit");
+  logo = document.querySelector(".title_logo");
+  user_id = window.location.search.split("=")[1];
 
   exit.addEventListener("click", () => {
     modal.style.display = "none";
+  });
+
+  logo.addEventListener("click", () => {
+    window.location.href = "/main?user_id=" + user_id;
   });
 };
 
