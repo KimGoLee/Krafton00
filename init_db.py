@@ -19,4 +19,5 @@ def insert_all():
 
 
 ### 실행하기
-insert_all()
+# insert_all()
+db.test.drop()

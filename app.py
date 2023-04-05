@@ -22,6 +22,7 @@ def save():
    email = request.form['give_email']
    pw = request.form['give_pw']
    blog = request.form['give_blog']
+   time = 0;
    user_info = {
       'name':name,
       'phnum':phnum,
@@ -29,7 +30,8 @@ def save():
       'team':team,
       'email':email,
       'pw':pw,
-      'blog':blog
+      'blog':blog,
+      'time': time
    }
    db.test.insert_one(user_info);
    return jsonify({'result': 'success'})
@@ -54,10 +56,18 @@ def main():
    return render_template("main.html")
 
 # logout
-@app.route('/logout',methods=['POST'])
+@app.route('/logout',methods=['POST','GET'])
 def logout():
    session.pop(request.form['give_user_id'])
    return jsonify({'result':'success'})
+
+# get : 사용자의 정보 가져오기
+@app.route('/user_info',methods=['POST'])
+def user_info():
+   id = request.form['give_user_id']
+   user_info = db.test.find_one({'_id':ObjectId(id)});
+   print(user_info['phnum'])
+   return jsonify({'result':'success','name':user_info['name'],'phnum':user_info['phnum'], 'room': user_info['room'],'team':user_info['team'],'email':user_info['email'],'blog':user_info['blog'],'time':user_info['time']})
 
 
 
