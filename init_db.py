@@ -354,5 +354,10 @@ def insert_all():
 
 
 ### 실행하기
+<<<<<<< HEAD
 insert_all()
 # db.test.drop()
+=======
+# insert_all()
+db.test.drop()
+>>>>>>> 00e14f239601a3db1d8648d8359b61dacde8dea6
