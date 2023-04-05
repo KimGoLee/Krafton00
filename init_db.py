@@ -256,7 +256,7 @@ def insert_all():
     "email": "tocomon09@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/tocomon09",
-    "time": "0"
+    "time": "100"
 }
     doc25 = {
     "name": "김태영",
@@ -266,7 +266,7 @@ def insert_all():
     "email": "markdj9205@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/markdj9205",
-    "time": "0"
+    "time": "1000"
 }
     doc26 = {
     "name": "김현수",
@@ -276,7 +276,7 @@ def insert_all():
     "email": "hsk7953@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/hsk7953",
-    "time": "0"
+    "time": "10"
 }
     doc27 = {
     "name": "노원주",
@@ -286,7 +286,7 @@ def insert_all():
     "email": "wonju@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/wonju",
-    "time": "0"
+    "time": "20"
 }
     doc28 = {
     "name": "박주영",
@@ -296,7 +296,7 @@ def insert_all():
     "email": "optimisticnihilism2007@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/optimisticnihilism2007",
-    "time": "0"
+    "time": "30"
 }
     doc29 = {
     "name": "박준익",
@@ -306,7 +306,7 @@ def insert_all():
     "email": "cod2048@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/cod2048",
-    "time": "0"
+    "time": "40"
 }
     doc30 = {
     "name": "이민지",
@@ -316,7 +316,7 @@ def insert_all():
     "email": "minji0479@gmail.com",
     "pw": "1",
     "blog": "https://blog.naver.com/minji0479",
-    "time": "0"
+    "time": "50"
 }
 
 
@@ -351,13 +351,7 @@ def insert_all():
     db.test.insert_one(doc29)
     db.test.insert_one(doc30)
 
-
-
-### 실행하기
-<<<<<<< HEAD
 insert_all()
+
 # db.test.drop()
-=======
-# insert_all()
-db.test.drop()
->>>>>>> 00e14f239601a3db1d8648d8359b61dacde8dea6
+

@@ -1,0 +1,146 @@
+@import url("common.css");
+.center {
+  display: grid;
+  grid-template-columns: 500px 500px 500px;
+  grid-template-rows: 255px 815px;
+}
+.rank_title {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  border-bottom: 3px solid var(--line_color);
+}
+.title_logo {
+  padding: 20px;
+}
+.title {
+  color: var(--line_color);
+  margin: auto 680px;
+}
+.rank_red {
+  border-right: 3px solid var(--line_color);
+}
+.rank_green {
+  border-right: 3px solid var(--line_color);
+}
+/* .rank_blue {
+
+} */
+.tred {
+  color: red;
+  margin: 20px 200px;
+}
+.tgreen {
+  color: green;
+  margin: 20px 200px;
+}
+.tblue {
+  color: blue;
+  margin: 20px 200px;
+}
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 627px;
+  height: 80%;
+  margin: 80px 750px;
+
+  display: none;
+
+  background-color: black;
+  border: 3px solid #bcb8b8;
+}
+/* .modal_body {
+  } */
+.title {
+  color: #bcb8b8;
+}
+.photo {
+  background-color: #bcb8b8;
+  width: 300px;
+  height: 200px;
+  margin-left: 50px;
+}
+.modal_name {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 50px;
+  width: 300px;
+  height: 30px;
+  color: white;
+}
+.modal_phnum {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 300px;
+  height: 30px;
+  color: white;
+}
+.modal_room {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 100px;
+  height: 30px;
+  color: white;
+}
+.modal_team {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 100px;
+  margin-top: 50px;
+  width: 90px;
+  height: 30px;
+  color: white;
+}
+.modal_email {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 476px;
+  height: 30px;
+  color: white;
+}
+.modal_pw {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 476px;
+  height: 30px;
+  color: white;
+}
+.modal_blog {
+  background-color: black;
+  border: black;
+  border-bottom: 3px solid #bcb8b8;
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 476px;
+  height: 30px;
+  color: white;
+}
+.topside {
+  display: flex;
+}
+
+.box {
+  height: 100%;
+  width: 100%;
+}
+
+.user_info {
+  margin-left: 20px;
+  color: white;
+}

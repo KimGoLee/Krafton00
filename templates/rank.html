@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rank</title>
+    <link rel="stylesheet" href="../static/css/rank.css" />
+
+    <!-- javascript 연결 -->
+    <script type="text/javascript" src="../static/js/rank.js"></script>
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="center">
+        <div class="modal">
+          <div class="modal_body">
+            <div class="exit">나가기</div>
+            <h1 class="title" style="text-align: center">&lt;GREEN/></h1>
+            <div class="topside">
+              <div class="photo" style="background-color: lightgray">사진</div>
+              <div class="topright">
+                <div class="modal_name"></div>
+                <div class="modal_phnum"></div>
+                <div class="modal_room"></div>
+                <div class="modal_team"></div>
+              </div>
+            </div>
+            <div class="modal_email"></div>
+            <div class="modal_blog"></div>
+          </div>
+          <div
+            class="modal_time"
+            id="modal_time"
+            style="
+              color: white;
+              font-weight: 1000;
+              font-size: xx-large;
+              margin-top: 30px;
+              text-align: center;
+            "
+          >
+            00h : 00m
+          </div>
+        </div>
+        <div class="rank_title">
+          <img class="title_logo" src="../static/logos/jungle_logo.svg" />
+          <h1 class="title">&lt;RANKING/></h1>
+        </div>
+        <div class="rank_red">
+          <h1 class="tred">&lt;RED/></h1>
+          <div class="box">
+            {% for user in redList %}
+            <div
+              class="user_info"
+              id="{{user['user_id']}}"
+              onclick="see_user(this.id)"
+            >
+              {{loop.index}}. {{user['name']}}-{{user['hour']}} h :
+              {{user['min']}} m
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="rank_green">
+          <h1 class="tgreen">&lt;GREEN/></h1>
+          <div class="box">
+            {% for user in greenList %}
+            <div
+              class="user_info"
+              id="{{user['user_id']}}"
+              onclick="see_user(this.id)"
+            >
+              {{loop.index}}. {{user['name']}}-{{user['hour']}} h :
+              {{user['min']}} m
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="rank_blue">
+          <h1 class="tblue">&lt;BLUE/></h1>
+          <div class="box">
+            {% for user in blueList %}
+            <div
+              class="user_info"
+              id="{{user['user_id']}}"
+              onclick="see_user(this.id)"
+            >
+              {{loop.index}}. {{user['name']}}-{{user['hour']}} h :
+              {{user['min']}} m
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
