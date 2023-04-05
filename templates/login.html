@@ -12,44 +12,68 @@
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
     />
     <link rel="stylesheet" href="../static/css/login.css" />
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- javascript 연결 -->
+    <script type="text/javascript" src="../static/js/login.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="center">
-        <img class="center-logo" src="../static/logos/jungle_logo.svg" />
-        <form action="">
-          <input
-            type="text"
-            placeholder="아이디를 입력하세요"
-            class="email"
-          /><br />
-          <input
-            type="password"
-            placeholder="비밀번호를 입력하세요"
-            class="password"
-          /><br />
-          <div class="login">LOGIN</div>
-          <div class="joing">JOIN</div>
-        </form>
+        <div class="modal">
+          <div class="modal_body">
+            <div class="exit">나가기</div>
+            <h1 class="title">&lt;회원가입/></h1>
+            <div class="topside">
+              <div class="photo" style="background-color: lightgray">사진</div>
+              <div class="topright">
+                <input type="text" placeholder="이름" class="join_name" />
+                <input type="text" placeholder="연락처" class="join_phnum" />
+                <input type="text" placeholder="객실 호수" class="join_room" />
+                <input type="text" placeholder="팀" class="join_team" />
+              </div>
+            </div>
+            <input
+              type="text"
+              placeholder="이메일을 입력하세요.(아이디)"
+              class="join_email"
+            />
+            <input
+              type="text"
+              placeholder="비밀번호를 입력하세요."
+              class="join_pw"
+            />
+            <input type="text" placeholder="블로그 주소" class="join_blog" />
+            <div class="save">save</div>
+          </div>
+        </div>
+        <div class="box">
+          <img class="center-logo" src="../static/logos/jungle_logo.svg" />
+          <form>
+            <input
+              type="text"
+              placeholder="아이디를 입력하세요"
+              class="email"
+            />
+            <input
+              type="password"
+              placeholder="비밀번호를 입력하세요"
+              class="password"
+            />
+            <div class="box1">
+              <div class="login">LOGIN</div>
+              <div class="v-line">|</div>
+              <div class="join">JOIN</div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
 </html>
-
-<!-- <div class="login-form">
-  <form>
-    <input
-      type="text"
-      name="email"
-      class="text-field"
-      placeholder="아이디"
-    />
-    <input
-      type="text"
-      name="password"
-      class="text-field"
-      placeholder="비밀번호"
-    />
-    <input type="submit" value="로그인" class="submit-btn" />
-  </form>
-</div> -->

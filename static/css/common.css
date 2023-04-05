@@ -17,6 +17,6 @@ body .container {
 body .container .center {
   grid-column-start: 2;
   grid-column-end: 3;
-  border-left: 2px solid #bcb8b8;
-  border-right: 2px solid #bcb8b8;
+  border-left: 2px solid var(--line_color);
+  border-right: 2px solid var(--line_color);
 }

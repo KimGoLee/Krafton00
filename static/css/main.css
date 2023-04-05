@@ -1,0 +1,58 @@
+@import url("common.css");
+
+.container {
+  border-right: 3px solid #bcb8b8;
+  border-left: 3px solid #bcb8b8;
+  width: 1500px;
+  height: 100%;
+  margin: auto;
+}
+.center {
+  display: grid;
+  grid-template-columns: 750px 750px;
+  grid-template-rows: 455px 615px;
+}
+.main_info {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  border-bottom: 3px solid #bcb8b8;
+}
+#detail_info {
+  display: flex;
+  padding: 30px;
+}
+#detail_left #detail_right {
+  padding-left: 300px;
+}
+#layout {
+  display: flex;
+  margin-right: 200px;
+  align-items: center;
+}
+#jungle_logo {
+  padding: 20px;
+}
+
+.stopwatch {
+  border-right: 3px solid #bcb8b8;
+  text-align: center;
+}
+.total_time {
+  text-align: center;
+}
+#testphoto {
+  background-color: gray;
+  width: 300px;
+  height: 350px;
+  margin-left: 300px;
+}
+.stopwatch {
+  border-right: 3px solid #bcb8b8;
+  text-align: center;
+}
+
+.logout {
+  position: absolute;
+  color: white;
+  margin-left: 1000px;
+}

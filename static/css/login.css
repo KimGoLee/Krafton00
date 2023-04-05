@@ -1,20 +1,181 @@
 @import url("common.css");
 
+.center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.box {
+  height: 350px;
+  width: 493px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+}
+
 .center-logo {
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
   width: 350px;
   height: 108px;
 }
 
-.email {
+form .email {
+  margin-bottom: 20px;
+  display: inline-block;
   width: 493px;
   height: 63px;
 }
 
-.password {
+form .password {
+  margin-bottom: 20px;
+  display: inline-block;
   width: 493px;
   height: 63px;
 }
 
-.login {
+form .box1 {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: auto;
+  width: 493px;
+}
+
+form .box1 .login {
+  cursor: pointer;
+  margin: 0 10px 20px 20px;
+  display: block;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  font-size: 30px;
   color: var(--jungle_color);
+}
+form .box1 .v-line {
+  font-size: 30px;
+  color: var(--line_color);
+}
+form .box1 .join {
+  cursor: pointer;
+  margin: 0 10px 20px 20px;
+  display: block;
+  font-size: 30px;
+  color: var(--line_color);
+}
+
+/* modal */
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 627px;
+  height: 800px;
+
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  border: 3px solid var(--line_color);
+  z-index: 2;
+}
+
+.exit {
+  color: white;
+}
+
+.title {
+  color: #bcb8b8;
+  margin: 30px 180px;
+}
+.photo {
+  background-color: var(--line_color);
+  width: 300px;
+  height: 200px;
+  margin-left: 50px;
+}
+.join_name {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 50px;
+  width: 300px;
+  height: 30px;
+  color: white;
+}
+.join_phnum {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 300px;
+  height: 30px;
+  color: white;
+}
+.join_room {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 100px;
+  height: 30px;
+  color: white;
+}
+.join_team {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 100px;
+  margin-top: 50px;
+  width: 90px;
+  height: 30px;
+  color: white;
+}
+.join_email {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 476px;
+  height: 30px;
+  color: white;
+}
+.join_pw {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 476px;
+  height: 30px;
+  color: white;
+}
+.join_blog {
+  background-color: black;
+  border: rgba(30, 30, 30, 1);
+  border-bottom: 3px solid var(--line_color);
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 476px;
+  height: 30px;
+  color: white;
+}
+.topside {
+  display: flex;
+}
+
+.save {
+  margin-top: 30px;
+  margin-left: 250px;
+  color: white;
 }
