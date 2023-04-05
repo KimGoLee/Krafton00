@@ -1,4 +1,5 @@
-from flask import url_for,session, Flask, render_template, jsonify,request,redirect
+import os
+from flask import url_for,session, Flask, render_template, jsonify,request,redirect,send_from_directory
 from pymongo import MongoClient 
 from bson import ObjectId
 app = Flask(__name__)
@@ -8,9 +9,16 @@ app.secret_key="kraftonjongle_blue02"
 client = MongoClient('localhost',27017)
 db = client.krafton   
 
+
+
 @app.route('/')
 def home():
    return render_template('login.html')
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 # 회원가입
 @app.route('/save',methods=['POST'])
@@ -89,10 +97,10 @@ def main():
          ranking = i+1;
          break
          
-
+   img_url = './static/images/'+email+'.jpg';
    
 
-   return render_template("main.html",name=name,email=email,phnum=phnum,room=room,team=team,blog=blog,hour=hour,minute=minute,second=second,total=total,ranking=ranking)
+   return render_template("main.html",name=name,email=email,phnum=phnum,room=room,team=team,blog=blog,hour=hour,minute=minute,second=second,total=total,ranking=ranking,img_url=img_url)
 
 # logout
 @app.route('/logout',methods=['POST','GET'])
@@ -142,6 +150,17 @@ def update_time():
    db.test.update_one({'_id':ObjectId(id)},{'$set':{'time':new_time}})
    
    return jsonify({'result':'success'})
+
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    # Get the file from the request
+    file = request.files['image']
+    # Save the file to the images folder
+    file.save('./static/images/' + file.filename)
+
+    return 'File uploaded successfully'
+
 
 
    

@@ -4,6 +4,12 @@ body {
   width: 100%;
   background-color: black;
 }
+
+img {
+  width: 200px;
+  height: auto;
+}
+
 .wrapper {
   border-right: 2px solid #bcb8b8;
   border-left: 2px solid #bcb8b8;

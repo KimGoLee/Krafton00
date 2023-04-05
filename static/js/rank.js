@@ -43,6 +43,8 @@ function see_user(user_id) {
           "블로그 " + response["blog"];
         document.querySelector(".modal_time").innerHTML =
           response["hour"] + " h : " + response["min"];
+        document.querySelector(".profile_img").src =
+          "./static/images/" + response["email"] + ".jpg";
         modal.style.display = "block";
       }
     },

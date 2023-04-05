@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>로그인</title>
 
     <!--브라우저 스타일 초기화-->
     <link
@@ -31,20 +31,10 @@
             <div class="exit">나가기</div>
             <h1 class="title">&lt;회원가입/></h1>
             <div class="topside">
-              <!-- <div class="photo" style="background-color: lightgray">
-                <form method="post" enctype="multipart/form-data">
-                  <div class="button">
-                    <label for="chooseFile"> 👉 CLICK HERE! 👈 </label>
-                  </div>
-                  <input
-                    type="file"
-                    id="chooseFile"
-                    name="chooseFile"
-                    accept="image/*"
-                    onchange="loadFile(this)"
-                  />
-                </form>
-              </div> -->
+              <form>
+                <input type="file" id="image" />
+                <!-- <button type="button" onclick="upload()">Upload</button> -->
+              </form>
               <div class="topright">
                 <input type="text" placeholder="이름" class="join_name" />
                 <input type="text" placeholder="연락처" class="join_phnum" />
@@ -63,7 +53,7 @@
               class="join_pw"
             />
             <input type="text" placeholder="블로그 주소" class="join_blog" />
-            <div class="save">save</div>
+            <div class="save" onclick="upload()">save</div>
           </div>
         </div>
         <div class="box">

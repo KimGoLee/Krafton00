@@ -77,7 +77,7 @@ window.onload = function () {
         } else {
           alert("회원가입 완료!");
           initialize_modal();
-          window.reload();
+          location.reload();
         }
       },
     });
@@ -95,3 +95,29 @@ window.onload = function () {
     document.querySelector(".modal").style.display = "none";
   }
 };
+
+function upload() {
+  // Get the file from the input tag
+  const email = document.querySelector(".join_email").value;
+  var file = $("#image")[0].files[0];
+  console.log(file);
+  console.log(file);
+  // Create a FormData object and add the file to it
+  var formData = new FormData();
+  formData.append("image", file, email + ".jpg");
+
+  // Send the AJAX request
+  $.ajax({
+    url: "/upload",
+    type: "POST",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function (data) {
+      console.log("File uploaded successfully");
+    },
+    error: function () {
+      console.log("Error uploading file");
+    },
+  });
+}

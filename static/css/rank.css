@@ -1,4 +1,9 @@
 @import url("common.css");
+img {
+  width: 200px;
+  height: 200px;
+}
+
 .center {
   display: grid;
   grid-template-columns: 500px 500px 500px;
