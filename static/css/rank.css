@@ -7,6 +7,11 @@ body {
   width: 100%;
   background-color: black;
 }
+
+a {
+  text-decoration: none;
+}
+
 .wrapper {
   width: 1200px;
   height: 100%;
@@ -27,7 +32,7 @@ body {
   padding: 20px;
 }
 .title {
-  color: #bcb8b8;
+  color: white;
   margin: auto;
   text-align: center;
 }

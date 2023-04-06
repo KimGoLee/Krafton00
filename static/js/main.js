@@ -21,6 +21,22 @@ window.onload = function () {
   //url에서 user_id 추출
   user_id = window.location.search.split("=")[1];
 
+  addEventListener("beforeunload", (event) => {
+    tt = 3600 * Number(hr) + 60 * Number(min) + Number(sec);
+    print(tt);
+    $.ajax({
+      url: "/main_close",
+      type: "POST",
+      data: { give_time: tt, give_user_id: user_id, give_login: login },
+      success: function (data) {
+        console.log("Data saved successfully");
+      },
+      error: function () {
+        console.log("Error saving data");
+      },
+    });
+  });
+
   logout.addEventListener("click", () => {
     login = "true";
     $.ajax({
@@ -102,20 +118,3 @@ function putValue() {
   document.querySelector(".minute").innerText = min;
   document.querySelector(".hour").innerText = hr;
 }
-
-$(window).on("beforeunload", function () {
-  tt = 3600 * Number(hr) + 60 * Number(min) + Number(sec);
-
-  // Send the data to the server using AJAX
-  $.ajax({
-    url: "/main_close",
-    type: "POST",
-    data: { give_time: tt, give_user_id: user_id, give_login: login },
-    success: function (data) {
-      console.log("Data saved successfully");
-    },
-    error: function () {
-      console.log("Error saving data");
-    },
-  });
-});

@@ -66,7 +66,7 @@ def login():
 def main():
    user_id = request.args['user_id'];
    if user_id not in session:
-      print("Login!")
+      print("Login first!")
       return redirect(url_for('home'))
 
 
@@ -126,7 +126,12 @@ def user_info():
 # open_rank : 랭크페이지로 이동
 @app.route('/rank')
 def rank():
+
    user_id = request.args['user_id'];
+   if user_id not in session:
+      print("Login first!")
+      return redirect(url_for('home'))
+   
    print("user_id : " + user_id)
    for i in session:
       print(i)
@@ -189,7 +194,7 @@ def upload():
     return 'File uploaded successfully'
 
 
-# seesion 종료와 시간 저장
+# main session 종료와 시간 저장
 @app.route('/main_close', methods=['POST'])
 def main_close():
    id = request.form['give_user_id']
@@ -198,8 +203,6 @@ def main_close():
    new_time = int(db.test.find_one({'_id':ObjectId(id)})['time'])+int(time);
    db.test.update_one({'_id':ObjectId(id)},{'$set':{'time':new_time}})
 
-   if login == 'false':
-      session.pop(request.form['give_user_id'])
 
    return 'close'
 
