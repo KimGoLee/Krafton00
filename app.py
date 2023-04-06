@@ -10,7 +10,7 @@ client = MongoClient('localhost',27017)
 db = client.krafton   
 
 
-
+ 
 @app.route('/')
 def home():
    return render_template('login.html')
@@ -55,16 +55,24 @@ def login():
       if email == data['email'] and password == data['pw']:
           user_id = str(data['_id']);
           session[user_id] = user_id;
+          print('user_id : ' + user_id)
+          print('session[user_id] : '+session[user_id])
+                
           return jsonify({'result': 'success','user_id':user_id})
    return jsonify({'result': 'fail'})
 
 # main
 @app.route('/main')
 def main():
-   color_list=[]
-
-   all_users = db.test.find({})
    user_id = request.args['user_id'];
+   if user_id not in session:
+      print("Login!")
+      return redirect(url_for('home'))
+
+
+
+   color_list=[]
+   all_users = db.test.find({})
    user_info = db.test.find_one({'_id':ObjectId(user_id)});
    name = user_info['name']
    email = user_info['email']
@@ -113,27 +121,47 @@ def logout():
 def user_info():
    id = request.form['give_user_id']
    user_info = db.test.find_one({'_id':ObjectId(id)});
-   print(user_info['phnum']) 
    return jsonify({'result':'success','name':user_info['name'],'phnum':user_info['phnum'], 'room': user_info['room'],'team':user_info['team'],'email':user_info['email'],'blog':user_info['blog'],'time':user_info['time'],'hour':int(user_info['time'])//3600,'min':int(user_info['time'])//60})
 
 # open_rank : 랭크페이지로 이동
 @app.route('/rank')
 def rank():
+   user_id = request.args['user_id'];
+   print("user_id : " + user_id)
+   for i in session:
+      print(i)
+   if user_id not in session:
+      print("Login!")
+      return redirect(url_for('home'))
+   
+
    redList=[];
    greenList=[];
    blueList=[];
    all_user_data=db.test.find({});
 
    for user in all_user_data :
+      hour = int(user['time'])//3600
+      minute = int(user['time'])//60
+      second = int(user['time'])%60
+      if hour < 10:
+         hour = '0'+str(hour)
+      if minute < 10:
+         minute = '0'+str(minute)
+      if second < 10:
+         second = '0'+str(second)
+      
       if user['team'] == 'red':
          user['time']=int(user['time']);
-         redList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
+         redList.append({'user_id':str(user['_id']),'name': user['name'],'hour':hour,'min':minute,'time':user['time'],'second':second});
       elif user['team'] == 'green':
          user['time']=int(user['time']);
-         greenList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
+         greenList.append({'user_id':str(user['_id']),'name': user['name'],'hour':hour,'min':minute,'time':user['time'],'second':second});
+         #greenList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
       elif user['team']=='blue':
          user['time']=int(user['time']);
-         blueList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
+         blueList.append({'user_id':str(user['_id']),'name': user['name'],'hour':hour,'min':minute,'time':user['time'],'second':second});
+         #blueList.append({'user_id':str(user['_id']),'name': user['name'],'hour':user['time']//3600,'min':user['time']//60,'time':user['time']});
    
    redList.sort(key=lambda x:-x['time'])
    greenList.sort(key=lambda x:-x['time'])
@@ -146,7 +174,6 @@ def update_time():
    id = request.form['give_user_id']
    time = request.form['give_time']
    new_time = int(db.test.find_one({'_id':ObjectId(id)})['time'])+int(time);
-   print(new_time)
    db.test.update_one({'_id':ObjectId(id)},{'$set':{'time':new_time}})
    
    return jsonify({'result':'success'})
@@ -160,6 +187,22 @@ def upload():
     file.save('./static/images/' + file.filename)
 
     return 'File uploaded successfully'
+
+
+# seesion 종료와 시간 저장
+@app.route('/main_close', methods=['POST'])
+def main_close():
+   id = request.form['give_user_id']
+   time = request.form['give_time']
+   login = request.form['give_login']
+   new_time = int(db.test.find_one({'_id':ObjectId(id)})['time'])+int(time);
+   db.test.update_one({'_id':ObjectId(id)},{'$set':{'time':new_time}})
+
+   if login == 'false':
+      session.pop(request.form['give_user_id'])
+
+   return 'close'
+
 
 
 

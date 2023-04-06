@@ -9,6 +9,8 @@ var ms = 0;
 var sec = 0;
 var min = 0;
 var hr = 0;
+var tt = 0;
+var login = "false";
 
 //페이지가 처음 실행될 때 하는 일들
 window.onload = function () {
@@ -19,30 +21,8 @@ window.onload = function () {
   //url에서 user_id 추출
   user_id = window.location.search.split("=")[1];
 
-  // $.ajax({
-  //   type: "POST",
-  //   url: "/user_info",
-  //   data: {
-  //     give_user_id: user_id,
-  //   },
-  //   success: function (response) {
-  //     if (response["result"] == "success") {
-  //       document.querySelector(".name").innerHTML =
-  //         "이름 : " + response["name"];
-  //       document.querySelector(".phnum").innerHTML =
-  //         "전화번호 : " + response["phnum"];
-  //       document.querySelector(".room").innerHTML =
-  //         "호수 : " + response["room"];
-  //       document.querySelector(".team").innerHTML = "팀 : " + response["team"];
-  //       document.querySelector(".email").innerHTML =
-  //         "이메일 : " + response["email"];
-  //       document.querySelector(".blog").innerHTML =
-  //         "블로그 : " + response["blog"];
-  //     }
-  //   },
-  // });
-
   logout.addEventListener("click", () => {
+    login = "true";
     $.ajax({
       type: "POST",
       url: "/logout",
@@ -58,6 +38,8 @@ window.onload = function () {
   });
 
   btn_rank.addEventListener("click", () => {
+    //stop하는 경우 reload될 때 session이 만료되면 안됨
+    login = "true";
     window.location.href = "/rank?user_id=" + user_id;
   });
 
@@ -69,6 +51,7 @@ function cal_time() {
   console.log(timer_status);
   if (timer_status == "stop") {
     btn_start.setAttribute("id", "start");
+    btn_start.innerText = "Stop";
     startTimer = setInterval(() => {
       ms++;
       ms = ms < 10 ? "0" + ms : ms;
@@ -96,6 +79,7 @@ function cal_time() {
     hr = min = sec = ms = "0" + 0;
     putValue(ms, sec, min, hr);
     btn_start.setAttribute("id", "stop");
+    btn_start.innerText = "Start";
 
     $.ajax({
       type: "POST",
@@ -103,6 +87,8 @@ function cal_time() {
       data: { give_user_id: user_id, give_time: tt },
       success: function (response) {
         if (response["result"] == "success") {
+          //stop하는 경우 reload될 때 session이 만료되면 안됨
+          login = "true";
           window.location.href = "/main?user_id=" + user_id;
         }
       },
@@ -116,3 +102,20 @@ function putValue() {
   document.querySelector(".minute").innerText = min;
   document.querySelector(".hour").innerText = hr;
 }
+
+$(window).on("beforeunload", function () {
+  tt = 3600 * Number(hr) + 60 * Number(min) + Number(sec);
+
+  // Send the data to the server using AJAX
+  $.ajax({
+    url: "/main_close",
+    type: "POST",
+    data: { give_time: tt, give_user_id: user_id, give_login: login },
+    success: function (data) {
+      console.log("Data saved successfully");
+    },
+    error: function () {
+      console.log("Error saving data");
+    },
+  });
+});
